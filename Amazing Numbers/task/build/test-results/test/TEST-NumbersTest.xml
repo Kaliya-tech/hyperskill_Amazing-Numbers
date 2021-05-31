@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="NumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-31T17:42:44" hostname="LAPTOP-4KFU9O35" time="0.457">
+  <properties/>
+  <testcase name="start" classname="NumbersTest" time="0.457"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> 0
+
+Goodbye!
+?[1;31m
+Start test 2?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> -17
+The first parameter should be a natural number or zero.
+
+Enter a request:
+> 0
+
+Goodbye!
+?[1;31m
+Start test 3?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> -106
+The first parameter should be a natural number or zero.
+
+Enter a request:
+> 0
+
+Goodbye!
+?[1;31m
+Start test 4?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> -18
+The first parameter should be a natural number or zero.
+
+Enter a request:
+> 0
+
+Goodbye!
+?[1;31m
+Start test 5?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> -117
+The first parameter should be a natural number or zero.
+
+Enter a request:
+> 0
+
+Goodbye!
+?[1;31m
+Start test 6?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> -111
+The first parameter should be a natural number or zero.
+
+Enter a request:
+> 0
+
+Goodbye!
+?[1;31m
+Start test 7?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter 0 to exit.
+
+Enter a request:
+> 1
+Properties of 1
+even: false
+odd: true
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 2
+Properties of 2
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 3
+Properties of 3
+even: false
+odd: true
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 4
+Properties of 4
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 5
+Properties of 5
+even: false
+odd: true
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 6
+Properties of 6
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 7
+Properties of 7
+even: false
+odd: true
+buzz: true
+duck: false
+palindromic: true
+
+Enter a request:
+> 8
+Properties of 8
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 9
+Properties of 9
+even: false
+odd: true
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 10
+Properties of 10
+even: true
+odd: false
+buzz: false
+duck: true
+palindromic: false
+
+Enter a request:
+> 11
+Properties of 11
+even: false
+odd: true
+buzz: false
+duck: false
+palindromic: true
+
+Enter a request:
+> 12
+Properties of 12
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: false
+
+Enter a request:
+> 13
+Properties of 13
+even: false
+odd: true
+buzz: false
+duck: false
+palindromic: false
+
+Enter a request:
+> 14
+Properties of 14
+even: true
+odd: false
+buzz: true
+duck: false
+palindromic: false
+
+Enter a request:
+> 1863281959444999634
+Properties of 1863281959444999634
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: false
+
+Enter a request:
+> 8772020258042937426
+Properties of 8772020258042937426
+even: true
+odd: false
+buzz: false
+duck: true
+palindromic: false
+
+Enter a request:
+> 5686363209776897990
+Properties of 5686363209776897990
+even: true
+odd: false
+buzz: false
+duck: true
+palindromic: false
+
+Enter a request:
+> 7740763383314178621
+Properties of 7740763383314178621
+even: false
+odd: true
+buzz: false
+duck: true
+palindromic: false
+
+Enter a request:
+> 6451263582593651381
+Properties of 6451263582593651381
+even: false
+odd: true
+buzz: true
+duck: false
+palindromic: false
+
+Enter a request:
+> 151293008278707649
+Properties of 151293008278707649
+even: false
+odd: true
+buzz: false
+duck: true
+palindromic: false
+
+Enter a request:
+> 8941079705361711524
+Properties of 8941079705361711524
+even: true
+odd: false
+buzz: false
+duck: true
+palindromic: false
+
+Enter a request:
+> 8125917815592689626
+Properties of 8125917815592689626
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: false
+
+Enter a request:
+> 5079505833903391007
+Properties of 5079505833903391007
+even: false
+odd: true
+buzz: true
+duck: true
+palindromic: false
+
+Enter a request:
+> 4377538585676895536
+Properties of 4377538585676895536
+even: true
+odd: false
+buzz: false
+duck: false
+palindromic: false
+
+Enter a request:
+> 0
+
+Goodbye!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
