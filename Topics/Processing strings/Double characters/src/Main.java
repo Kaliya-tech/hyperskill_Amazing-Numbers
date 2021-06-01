@@ -4,8 +4,11 @@ class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String text = scanner.next();
-        String[] parts = text.split("-");
+        String str = "";
 
-        System.out.println( parts[1] + "/" + parts[2] + "/" + parts[0]);
+        for (int i = 0; i < text.length(); i++) {
+            str = str + text.charAt(i) + text.charAt(i);
+        }
+        System.out.println(str);
     }
 }

@@ -1,5 +1,6 @@
 package numbers;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,8 +9,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Amazing Numbers!");
         System.out.println();
-        System.out.println("Supported requests:\n" +
-                "- enter a natural number to know its properties;\n" +
+        System.out.println("- enter a natural number to know its properties;\n" +
+                "- enter two natural numbers to obtain the properties of the list:\n" +
+                "  * the first parameter represents a starting number;\n" +
+                "  * the second parameter shows how many consecutive numbers are to be printed;\n" +
+                "- separate the parameters with one space;\n" +
                 "- enter 0 to exit.");
         promtStart(scanner);
     }
@@ -17,62 +21,91 @@ public class Main {
     public static void promtStart (Scanner scanner) {
         System.out.println();
         System.out.println("Enter a request:");
-        long num = scanner.nextLong();
-        checkInput(num, scanner);
+        String input = scanner.nextLine();
+        char ch = ' ';
+        char check;
+
+        for (int i = 0; i< input.length() - 1; i++) {
+            check = input.charAt(i);
+            if (check == ch) {
+                String[] inputTwo = input.split(" ");
+            } else {
+
+            }
+        }
+        long number = Long.parseLong(input);
+        checkInput(number, scanner);
+
+
+
     }
 
-    public static void checkInput (long num, Scanner scanner) {
+    public static void checkInput (long number, Scanner scanner) {
 
-        if (num < 0) {
+        if (number < 0) {
             System.out.println("The first parameter should be a natural number or zero.");
             promtStart(scanner);
-        } else if (num == 0){
+        } else if (number == 0){
             System.out.println();
             System.out.println("Goodbye!");
             return;
         } else {
-            naturalOrNot(num, scanner);
+            naturalOrNot(number, scanner);
         }
     }
 
-    private static void naturalOrNot (long num, Scanner scanner) {
-        if (num < 1) {
+    private static void naturalOrNot (long number, Scanner scanner) {
+        if (number < 1) {
             System.out.println("This number is not natural!");
             return;
         } else {
-            checkProperties(num, scanner);
+            checkProperties(number, scanner);
         }
     }
 
-    private static void checkProperties (long num, Scanner scanner) {
-        System.out.println("Properties of " + num);
-        System.out.println("even: " + checkForEven(num));
-        System.out.println("odd: " + checkForOdd(num));
-        System.out.println("buzz: " + checkForBuzz(num));
-        System.out.println("duck: " + checkForDuck(num));
-        System.out.println("palindromic: " + checkForPalindromic(num));
+    private static void checkProperties (long number, Scanner scanner) {
+        System.out.println("Properties of " + number);
+        System.out.println("buzz: " + checkForBuzz(number));
+        System.out.println("duck: " + checkForDuck(number));
+        System.out.println("gapful: " + checkForGapful(number));
+        System.out.println("palindromic: " + checkForPalindromic(number));
+        System.out.println("even: " + checkForEven(number));
+        System.out.println("odd: " + checkForOdd(number));
         promtStart(scanner);
     }
 
-    private static boolean checkForEven (long num) {
+    private static boolean checkForGapful (long number) {
+
+        System.out.println("gap " + number);
+        /*
         if (num % 2 == 0) {
             return true;
         } else {
             return false;
-        }
+        }*/
+        return true;
     }
 
-    private static boolean checkForOdd (long num) {
-        if (num % 2 != 0) {
+
+    private static boolean checkForEven (long number) {
+        if (number % 2 == 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    private static boolean checkForDuck (long num) {
+    private static boolean checkForOdd (long number) {
+        if (number % 2 != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        String str = String.valueOf(num);
+    private static boolean checkForDuck (long number) {
+
+        String str = String.valueOf(number);
         int count = 0;
         boolean isDuck = false;
 
@@ -90,10 +123,10 @@ public class Main {
         return isDuck;
     }
 
-    private static boolean checkForBuzz (long num) {
+    private static boolean checkForBuzz (long number) {
 
         boolean isBuzz;
-        if (num % 10 != 7 && num % 7 != 0) {
+        if (number % 10 != 7 && number % 7 != 0) {
             isBuzz = false;
         } else {
             isBuzz = true;
