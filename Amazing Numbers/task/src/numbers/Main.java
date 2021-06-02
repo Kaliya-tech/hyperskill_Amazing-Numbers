@@ -1,6 +1,5 @@
 package numbers;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -18,29 +17,53 @@ public class Main {
         promtStart(scanner);
     }
 
-    public static void promtStart (Scanner scanner) {
+    private static void promtStart(Scanner scanner) {
         System.out.println();
         System.out.println("Enter a request:");
         String input = scanner.nextLine();
-        char ch = ' ';
-        char check;
+        String[] ints = input.split(" ");
+        String numberOne = ints[0];
 
-        for (int i = 0; i< input.length() - 1; i++) {
-            check = input.charAt(i);
-            if (check == ch) {
-                String[] inputTwo = input.split(" ");
-            } else {
+        if (ints.length > 1) {
+            stringToInts(ints);
 
-            }
+        } else {
+            stringToLong(ints, scanner, numberOne);
         }
-        long number = Long.parseLong(input);
-        checkInput(number, scanner);
-
-
-
     }
 
-    public static void checkInput (long number, Scanner scanner) {
+    private static void stringToInts(String[] ints) {  // case with 2 ints
+        String numberOne = ints[0];
+
+        processTwoInts(ints,numberOne);
+    }
+
+    private static void stringToLong(String[] ints, Scanner scanner, String numberOne) {
+        long number = Long.parseLong(ints[0]);
+        checkInput(number, scanner, numberOne);
+    }
+
+    private static void processTwoInts(String[] ints, String numberOne) {
+
+        long number = Long.parseLong(numberOne);
+        String numberTwo = ints[1];
+        int indexTwo =Integer.parseInt(numberTwo);
+
+        int result = -1;
+
+        for (int i = 0; i < indexTwo; i++) {
+            result++;
+            long allSequence = number + (result);
+            System.out.println(allSequence + " is " +
+                    "buzz, " +
+                    "duck, " +
+                    "gapful, " +
+                    "odd");
+        }
+
+}
+
+    private static void checkInput (long number, Scanner scanner, String numberOne) {
 
         if (number < 0) {
             System.out.println("The first parameter should be a natural number or zero.");
@@ -50,40 +73,53 @@ public class Main {
             System.out.println("Goodbye!");
             return;
         } else {
-            naturalOrNot(number, scanner);
+            naturalOrNot(number, scanner, numberOne);
         }
     }
 
-    private static void naturalOrNot (long number, Scanner scanner) {
+    private static void naturalOrNot (long number, Scanner scanner, String numberOne) {
         if (number < 1) {
             System.out.println("This number is not natural!");
             return;
         } else {
-            checkProperties(number, scanner);
+            checkProperties(number, scanner, numberOne);
         }
     }
 
-    private static void checkProperties (long number, Scanner scanner) {
+    private static void checkProperties (long number, Scanner scanner, String numberOne) {
         System.out.println("Properties of " + number);
         System.out.println("buzz: " + checkForBuzz(number));
         System.out.println("duck: " + checkForDuck(number));
-        System.out.println("gapful: " + checkForGapful(number));
         System.out.println("palindromic: " + checkForPalindromic(number));
+        System.out.println("gapful: " + checkForGapful(numberOne));
         System.out.println("even: " + checkForEven(number));
         System.out.println("odd: " + checkForOdd(number));
         promtStart(scanner);
     }
 
-    private static boolean checkForGapful (long number) {
+    private static boolean checkForGapful (String numberOne) {
 
-        System.out.println("gap " + number);
-        /*
-        if (num % 2 == 0) {
-            return true;
+       boolean isGapful = false;
+
+        if (numberOne.length() < 3) {
+            isGapful = false;
+        }
+        int numberInt = Integer.parseInt(numberOne);
+        System.out.println("numberInt "+ numberInt);
+
+        String check1 = numberOne.substring(0, 1);
+        String check2 = numberOne.substring(numberOne.length() - 1, numberOne.length());
+        String check3 = check1 + check2;
+
+        int checkInt = Integer.parseInt(check3);
+
+        if (numberInt % checkInt == 0) {
+            isGapful = true;
+            System.out.println("its Gapful!");
         } else {
-            return false;
-        }*/
-        return true;
+            isGapful = false;
+        }
+        return isGapful;
     }
 
 
