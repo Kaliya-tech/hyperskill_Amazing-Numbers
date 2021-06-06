@@ -8,120 +8,141 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Amazing Numbers!");
         System.out.println();
-        System.out.println("- enter a natural number to know its properties;\n" +
+        System.out.println("Supported requests:" +
+                "- enter a natural number to know its properties;\n" +
                 "- enter two natural numbers to obtain the properties of the list:\n" +
                 "  * the first parameter represents a starting number;\n" +
                 "  * the second parameter shows how many consecutive numbers are to be printed;\n" +
                 "- separate the parameters with one space;\n" +
                 "- enter 0 to exit.");
-        promtStart(scanner);
+
+        promptEnterRequest(scanner);
     }
 
-    private static void promtStart(Scanner scanner) {
+    private static void promptEnterRequest(Scanner scanner) {
         System.out.println();
         System.out.println("Enter a request:");
         String input = scanner.nextLine();
         String[] ints = input.split(" ");
+
         String numberOne = ints[0];
+        long number = Long.parseLong(ints[0]);
 
-        if (ints.length > 1) {
-            stringToInts(ints);
+        if (ints.length == 1) {
+            if (number == 0) {
+                System.out.println("Goodbye!");
+                return;
+            } else if (number <= -1) {
+                System.out.println("The first parameter should be a natural number or zero.");
+                promptEnterRequest(scanner);
+                return;
+            } else if (number >= 1) {
+                naturalOrNot(numberOne, number, scanner);
+                return;
+            }
 
-        } else {
-            stringToLong(ints, scanner, numberOne);
+        } else if (ints.length == 2) {
+            long number2 = Long.parseLong(ints[1]);
+
+            if (number2 <= -1) {
+                System.out.println("The second parameter should be a natural number.");
+                promptEnterRequest(scanner);
+                return;
+            } else if (number <= -1) {
+                System.out.println("The first parameter should be a natural number or zero.");
+                promptEnterRequest(scanner);
+                return;
+            } else {
+                processTwoInts(ints, scanner);
+            }
         }
     }
 
-    private static void stringToInts(String[] ints) {  // case with 2 ints
+    private static void processTwoInts(String[] ints, Scanner scanner) {
         String numberOne = ints[0];
-
-        processTwoInts(ints,numberOne);
-    }
-
-    private static void stringToLong(String[] ints, Scanner scanner, String numberOne) {
-        long number = Long.parseLong(ints[0]);
-        checkInput(number, scanner, numberOne);
-    }
-
-    private static void processTwoInts(String[] ints, String numberOne) {
-
-        long number = Long.parseLong(numberOne);
         String numberTwo = ints[1];
-        int indexTwo =Integer.parseInt(numberTwo);
-
+        long number1 = Long.parseLong(numberOne);
+        int indexTwo = Integer.parseInt(numberTwo);
         int result = -1;
 
         for (int i = 0; i < indexTwo; i++) {
             result++;
-            long allSequence = number + (result);
-            System.out.println(allSequence + " is " +
-                    "buzz, " +
-                    "duck, " +
-                    "gapful, " +
-                    "odd");
-        }
+            long number = number1 + (result);
 
-}
-
-    private static void checkInput (long number, Scanner scanner, String numberOne) {
-
-        if (number < 0) {
-            System.out.println("The first parameter should be a natural number or zero.");
-            promtStart(scanner);
-        } else if (number == 0){
+            System.out.print(number + " is ");
+            System.out.print((checkForBuzz(number)) ? "buzz, " : "");
+            System.out.print((checkForDuck(number)) ? "duck, " : "");
+            System.out.print((checkForPalindromic(number)) ? "palindromic, " : "");
+            System.out.print((checkForGapfulTwo(number)) ? "gapful, " : "");
+            System.out.print((checkForEven(number)) ? "even" : "odd");
             System.out.println();
-            System.out.println("Goodbye!");
-            return;
-        } else {
-            naturalOrNot(number, scanner, numberOne);
         }
+        promptEnterRequest(scanner);
     }
 
-    private static void naturalOrNot (long number, Scanner scanner, String numberOne) {
-        if (number < 1) {
+    private static void naturalOrNot (String numberOne, long number, Scanner scanner) {
+        if (number < 0) {
             System.out.println("This number is not natural!");
             return;
         } else {
-            checkProperties(number, scanner, numberOne);
+            checkPropertiesOne(numberOne, scanner, number);
         }
     }
 
-    private static void checkProperties (long number, Scanner scanner, String numberOne) {
-        System.out.println("Properties of " + number);
-        System.out.println("buzz: " + checkForBuzz(number));
-        System.out.println("duck: " + checkForDuck(number));
-        System.out.println("palindromic: " + checkForPalindromic(number));
-        System.out.println("gapful: " + checkForGapful(numberOne));
-        System.out.println("even: " + checkForEven(number));
-        System.out.println("odd: " + checkForOdd(number));
-        promtStart(scanner);
-    }
+    private static boolean checkForGapfulOne (String numberOne) {
 
-    private static boolean checkForGapful (String numberOne) {
-
-       boolean isGapful = false;
-
-        if (numberOne.length() < 3) {
-            isGapful = false;
-        }
-        int numberInt = Integer.parseInt(numberOne);
-        System.out.println("numberInt "+ numberInt);
+        boolean isGapful = false;
+        long numberInt = Long.parseLong(numberOne);
 
         String check1 = numberOne.substring(0, 1);
         String check2 = numberOne.substring(numberOne.length() - 1, numberOne.length());
         String check3 = check1 + check2;
 
-        int checkInt = Integer.parseInt(check3);
+        long checkInt = Long.parseLong(check3);
 
-        if (numberInt % checkInt == 0) {
+        if (numberOne.length() < 3) {
+            isGapful = false;
+        } else if (numberInt % checkInt == 0) {
             isGapful = true;
-            System.out.println("its Gapful!");
         } else {
             isGapful = false;
         }
         return isGapful;
     }
 
+    private static boolean checkForGapfulTwo (long number) {
+
+        boolean isGapful = false;
+        String numberTwo = String.valueOf(number);
+
+        long numberInt = Long.parseLong(numberTwo);
+
+        String check1 = numberTwo.substring(0, 1);
+        String check2 = numberTwo.substring(numberTwo.length() - 1, numberTwo.length());
+        String check3 = check1 + check2;
+
+        int checkInt = Integer.parseInt(check3);
+
+        if (numberTwo.length() < 3) {
+            isGapful = false;
+        } else if (numberInt % checkInt == 0) {
+            isGapful = true;
+        } else {
+            isGapful = false;
+        }
+        return isGapful;
+    }
+
+    private static void checkPropertiesOne(String numberOne, Scanner scanner, long number) {
+        System.out.println("Properties of " + number);
+        System.out.println("buzz: " + checkForBuzz(number));
+        System.out.println("duck: " + checkForDuck(number));
+        System.out.println("palindromic: " + checkForPalindromic(number));
+        System.out.println("gapful: " + checkForGapfulOne(numberOne));
+        System.out.println("even: " + checkForEven(number));
+        System.out.println("odd: " + checkForOdd(number));
+        promptEnterRequest(scanner);
+    }
 
     private static boolean checkForEven (long number) {
         if (number % 2 == 0) {
