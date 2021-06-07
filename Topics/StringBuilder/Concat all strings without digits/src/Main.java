@@ -6,6 +6,7 @@ class ConcatenateStringsProblem {
     public static String concatenateStringsWithoutDigits(String[] strings) {
         StringBuilder str = new StringBuilder(String.valueOf(strings));
 
+        str.setCharAt();
         String stringNew = Arrays.toString(strings);
 
         String replaced = stringNew.replaceAll("[0-9]","");
@@ -13,7 +14,8 @@ class ConcatenateStringsProblem {
         System.out.println(stringNew + " new");
         System.out.println(replaced + " rep");
 
-        String output = replaced.replaceAll(",");
+        String output = replaced.replace(",");
+        System.out.println(Arrays.asList(strings + " 5"));
         return replaced;
 
        /* String stringNew = str.toString();
