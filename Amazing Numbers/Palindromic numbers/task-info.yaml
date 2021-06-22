@@ -257,11 +257,8 @@ files:
         }
 
         @DynamicTest(order = 20)
-        CheckResult naturalNumbersTest() {
-            final var numbers = LongStream.concat(
-                    LongStream.range(1, FIRST_NUMBERS),
-                    random.longs(RANDOM_TESTS, 1, Long.MAX_VALUE)
-            );
+        CheckResult firstNumbersTest() {
+            final var numbers = LongStream.range(1, FIRST_NUMBERS);
 
             program.start().check(WELCOME).check(HELP);
 
@@ -273,13 +270,29 @@ files:
                     .check(RUNNING));
 
             return program
-                    .check(RUNNING)
                     .check(ASK_REQUEST)
                     .execute(0)
                     .check(FINISHED)
                     .result();
         }
 
+        private long[] getLongNumbers() {
+            return random.longs(RANDOM_TESTS, Integer.MAX_VALUE, Long.MAX_VALUE).toArray();
+        }
+
+        @DynamicTest(data = "getLongNumbers", order = 30)
+        CheckResult longNumbersTest(long number) {
+            return new UserProgram()
+                    .start()
+                    .check(ASK_REQUEST)
+                    .execute(number)
+                    .check(PROPERTIES_OF)
+                    .check(new PropertiesChecker(number))
+                    .check(ASK_REQUEST)
+                    .execute(0)
+                    .check(FINISHED)
+                    .result();
+        }
 
     }
   learner_created: false
@@ -376,7 +389,4 @@ files:
   learner_created: false
 feedback_link: https://hyperskill.org/projects/184/stages/933/implement#comment
 status: Solved
-feedback:
-  message: Congratulations!
-  time: Mon, 31 May 2021 17:42:45 UTC
 record: 3
